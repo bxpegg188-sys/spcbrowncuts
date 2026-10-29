@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPC Brown Cuts Flyer</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@500;700&family=IBM+Plex+Mono:wght@600&display=swap">
+<style>
+:root { --ink:#0b0b0c; --chalk:#f3f0e8; --pole:#e1251b; --blue:#2a4bd7; --steel:#9a9ea8;
+  --display:"Anton","Inter Display Black","Inter Display","Impact",sans-serif;
+  --body:"Barlow","Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","DejaVu Sans Mono",Menlo,monospace; }
+@page { size: letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #444; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--body); }
+.help { max-width: 8.5in; margin: 16px auto; color: #fff; font: 500 15px/1.4 var(--body); padding: 0 12px; }
+.help b { color: #ffc531; }
+.sheet { width: 8.5in; height: 11in; margin: 0 auto 24px; background: var(--ink); color: var(--chalk); position: relative; overflow: hidden; padding: .45in .6in .4in; display: flex; flex-direction: column; }
+.pole { position: absolute; top: 0; bottom: 0; right: .28in; width: .2in; border-radius: .1in;
+  background: repeating-linear-gradient(135deg, var(--pole) 0 .14in, var(--chalk) .14in .28in, var(--blue) .28in .42in, var(--chalk) .42in .56in); }
+.eyebrow { font: 600 13px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--steel); }
+h1 { font-family: var(--display); font-weight: 900; text-transform: uppercase; margin: 14px 0 0; font-size: 1.2in; line-height: .86; letter-spacing: -.005em; }
+h1 .o { color: transparent; -webkit-text-stroke: 3px var(--chalk); }
+h1 .r { color: var(--pole); }
+.sub { font: 700 22px/1.3 var(--body); margin: 18px 0 0; max-width: 5.6in; }
+.sub b { color: var(--pole); white-space: nowrap; }
+.photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .14in; margin: .24in 0 .14in; padding-right: .3in; }
+.photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 5px solid var(--chalk); border-radius: 10px; background: #1b1b1e; }
+.photos img:nth-child(1) { transform: rotate(-3deg); } .photos img:nth-child(3) { transform: rotate(3deg); }
+.no-photos .photos { display: none; }
+.no-photos h1 { font-size: 1.55in; }
+body:not(.no-photos) .menu { display: none; }
+.menu { display: flex; gap: .16in; flex-wrap: wrap; margin-top: .3in; }
+.menu span { font: 400 26px/1 var(--display); font-weight: 900; text-transform: uppercase; border: 2px solid var(--chalk); border-radius: 999px; padding: 10px 18px; }
+.bottom { margin-top: auto; display: grid; grid-template-columns: 1fr auto; gap: .35in; align-items: end; background: var(--pole); color: #fff; border-radius: 22px; padding: .32in; margin-right: .3in; }
+.bottom h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: .78in; line-height: .9; margin: 0; }
+.bottom p { font: 700 19px/1.35 var(--body); margin: 12px 0 0; }
+.bottom .stars { color: #ffd84a; letter-spacing: 3px; font-size: 22px; }
+.qr { background: #fff; border-radius: 14px; padding: 12px; text-align: center; }
+.qr img { width: 2.15in; height: 2.15in; display: block; image-rendering: pixelated; }
+.qr small { display: block; color: var(--ink); font: 600 12px/1 var(--mono); letter-spacing: .12em; margin-top: 8px; text-transform: uppercase; }
+.price { position: absolute; right: .75in; top: .7in; width: 1.55in; height: 1.55in; border-radius: 50%; background: var(--pole); color: #fff; display: grid; place-items: center; text-align: center; transform: rotate(12deg); border: 3px dashed rgba(255,255,255,.6); }
+.price b { font-family: var(--display); font-weight: 900; font-size: .62in; line-height: .9; display: block; }
+.price small { font: 600 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+@media print { html, body { background: none; } .help { display: none; } .sheet { margin: 0; } }
+</style>
+</head>
+<body>
+<p class="help"><b>To print:</b> press Command + P (or Ctrl + P), pick Letter paper, turn ON "Background graphics", and set margins to None.</p>
+<div class="sheet">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="price"><div><b>$25</b><small>a head</small></div></div>
+  <span class="eyebrow">Fades · Tapers · Line-ups</span>
+  <h1>SPC<br><span class="o">Brown</span><br><span class="r">Cuts</span></h1>
+  <p class="sub">Clean cuts that stay in regs and still hit. <b>$25 a head.</b></p>
+  <div class="photos">
+    <img src="https://assets.thecut.co/66ae8a919b9ceb56f63464cd/public/dd35b775-9323-402e-b78c-9b84de3264ca.jpg" alt="Fade by SPC Brown" referrerpolicy="no-referrer">
+    <img src="https://assets.thecut.co/66ae8a919b9ceb56f63464cd/public/98504a63-0458-4b9c-b42e-c84d5529c442.jpg" alt="Cut by SPC Brown" referrerpolicy="no-referrer">
+    <img src="https://assets.thecut.co/66ae8a919b9ceb56f63464cd/public/3bd89928-2cac-4f8a-84c4-a2c0922f3f6d.jpg" alt="Cut by SPC Brown" referrerpolicy="no-referrer">
+  </div>
+  <div class="menu"><span>Fades</span><span>Tapers</span><span>Line-ups</span></div>
+  <div class="bottom">
+    <div>
+      <h2>Scan to<br>book</h2>
+      <p><span class="stars">★★★★★</span><br>5.0 from 128 reviews.<br>Pick your day and I'll message you to lock it in.</p>
+    </div>
+    <div class="qr"><img src="qr.png" alt="QR code to book a cut"><small>Scan me</small></div>
+  </div>
+</div>
+</body>
+</html>
