@@ -494,7 +494,7 @@ a.slot:hover small, a.slot:focus-visible small { color: #fff; }
       </div>
       <div class="steps">
         <div class="step reveal"><h3>Tap book</h3><p>Hit any Book button or scan the code on a flyer.</p></div>
-        <div class="step reveal"><h3>Pick a day</h3><p>Drop your name, number and the day that works for you. Or tap an open time above.</p></div>
+        <div class="step reveal"><h3>Pick a day</h3><p>Drop your name, number and the day and time that work for you. Or tap an open time above.</p></div>
         <div class="step reveal"><h3>Get locked in</h3><p>I'll message you to confirm your spot. Pull up fresh.</p></div>
       </div>
     </div>
@@ -700,7 +700,7 @@ const localDay = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(
 const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
 const twelve = t => { const [h, m] = t.split(":").map(Number); return ((h + 11) % 12 + 1) + ":" + pad(m) + (h < 12 ? "a" : "p"); };
 const niceDay = iso => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
-const formLink = (day, time) => FORM + "&entry.130636395=" + day + (time ? "&entry.1173833266=" + encodeURIComponent("Time I want: " + time) : "");
+const formLink = (day, time) => FORM + "&entry.130636395=" + day + (time ? "+" + time : "");  /* the form's day question has a time too */
 function bookLink(text, day, time, cls) {
   const a = el("a", cls, null); a.href = formLink(day, time); a.target = "_blank"; a.rel = "noopener";
   if (text) a.textContent = text;
