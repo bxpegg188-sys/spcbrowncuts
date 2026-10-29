@@ -86,11 +86,11 @@
     },
     {
      "t": "18:30",
-     "open": true
+     "open": false
     },
     {
      "t": "19:15",
-     "open": true
+     "open": false
     },
     {
      "t": "20:00",
@@ -242,5 +242,5 @@
    "closed": false
   }
  ],
- "updated": "2026-10-29T16:12"
+ "updated": "2026-10-29T19:49"
 }
