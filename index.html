@@ -304,6 +304,44 @@ footer.site small { font: 500 .78rem/1.5 var(--mono); letter-spacing: .04em; }
 .lb .count { position: absolute; bottom: max(18px, env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); font: 600 .8rem/1 var(--mono); letter-spacing: .12em; color: var(--steel); }
 @media (max-width: 600px) { .lb .prev, .lb .next { top: auto; bottom: max(12px, env(safe-area-inset-bottom, 0px)); transform: none; } }
 
+/* open times (live from Jermaine) */
+.live { display: inline-flex; align-items: center; gap: 8px; }
+.live i { width: 9px; height: 9px; border-radius: 50%; background: var(--pole); box-shadow: 0 0 0 0 rgba(225,37,27,.7); animation: livepulse 1.8s ease-out infinite; }
+@keyframes livepulse { 70% { box-shadow: 0 0 0 9px rgba(225,37,27,0); } 100% { box-shadow: 0 0 0 0 rgba(225,37,27,0); } }
+.times { border: 1px solid var(--line); border-radius: 22px; background: var(--ink-2); padding: clamp(16px, 3vw, 28px); }
+.days { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 14px; margin: 0 -2px; scrollbar-width: thin; scroll-snap-type: x proximity; }
+.day {
+  all: unset; box-sizing: border-box; cursor: pointer; flex: 0 0 auto; min-width: 74px; scroll-snap-align: start;
+  display: grid; justify-items: center; gap: 4px; padding: 12px 10px 10px; border-radius: 16px; border: 2px solid var(--line); background: var(--ink);
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.day:hover { border-color: var(--steel); transform: translateY(-2px); }
+.day .dw { font: 600 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--steel); }
+.day .dn { font: 400 2rem/1 var(--display); }
+.day .dc { font: 600 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--steel); white-space: nowrap; }
+.day .dc.has { color: #5fd38d; }
+.day[aria-selected="true"] { border-color: var(--pole); background: var(--pole); }
+.day[aria-selected="true"] .dw, .day[aria-selected="true"] .dc { color: #fff; }
+.slots-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 6px 0 14px; }
+.slots-head h3 { font-size: clamp(1.6rem, 4vw, 2.2rem); text-transform: uppercase; }
+.slots-head span { font: 600 .74rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--steel); }
+.slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.slot {
+  display: grid; justify-items: center; gap: 4px; padding: 14px 8px 12px; border-radius: 14px; border: 2px solid var(--chalk);
+  text-decoration: none; color: var(--chalk); transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.slot b { font: 400 1.9rem/1 var(--display); letter-spacing: .02em; }
+.slot small { font: 600 .72rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--steel); }
+a.slot:hover, a.slot:focus-visible { background: var(--pole); border-color: var(--pole); transform: translateY(-2px) rotate(-1deg); }
+a.slot:hover small, a.slot:focus-visible small { color: #fff; }
+.slot.taken { border-style: dashed; border-color: var(--line); color: var(--steel); }
+.slot.taken b { text-decoration: line-through; text-decoration-thickness: 2px; opacity: .6; }
+.times-msg { border: 1px dashed var(--steel); border-radius: 16px; padding: 18px; display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between; }
+.times-msg p { margin: 0; max-width: 46ch; }
+.times-msg .btn { font-size: 1.1rem; padding: .8rem 1.2rem; }
+.times-note { margin: 16px 0 0; font: 500 .8rem/1.5 var(--mono); letter-spacing: .03em; color: var(--steel); }
+@media (max-width: 480px) { .slot-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .slot b { font-size: 1.55rem; } .day { min-width: 64px; } }
+
 /* reveal on scroll: content is visible by default; JS only adds the motion */
 .js .reveal { transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .8s ease; }
 .js .reveal.pre { transform: translateY(28px); opacity: .55; }
@@ -328,6 +366,7 @@ footer.site small { font: 500 .78rem/1.5 var(--mono); letter-spacing: .04em; }
     <nav aria-label="Sections">
       <a href="#work">The work</a>
       <a href="#price">Price</a>
+      <a href="#times">Times</a>
       <a href="#reviews">Reviews</a>
       <a class="btn btn-red" href="https://docs.google.com/forms/d/e/1FAIpQLSdnQxuB5c-81eNuxnkwZpGdly6DO29o6xSyjWumcNns9kBIIg/viewform?usp=dialog&hl=en" target="_blank" rel="noopener">Book</a>
     </nav>
@@ -404,6 +443,23 @@ footer.site small { font: 500 .78rem/1.5 var(--mono); letter-spacing: .04em; }
     </div>
   </section>
 
+  <section id="times" aria-labelledby="times-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow live"><i aria-hidden="true"></i>Live from my schedule</span><h2 id="times-title">Open <span class="red">times</span></h2></div>
+        <p>Tap a time to grab it, then I'll text you to lock it in. Lunch and weekend times show up here when I'm cutting.</p>
+      </div>
+      <div class="times reveal" id="times-box">
+        <div class="days" id="days" role="tablist" aria-label="Pick a day" hidden></div>
+        <div id="slots" aria-live="polite">
+          <div class="times-msg"><p>Open times load right here. If you don't see them, tap Book, pick your day, and I'll text you a time.</p>
+            <a class="btn btn-red" href="https://docs.google.com/forms/d/e/1FAIpQLSdnQxuB5c-81eNuxnkwZpGdly6DO29o6xSyjWumcNns9kBIIg/viewform?usp=dialog&hl=en" target="_blank" rel="noopener">Book a cut</a></div>
+        </div>
+        <p class="times-note">Times are first come, first served. Your spot is locked once I text you back.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" aria-labelledby="reviews-title" style="padding-top:0">
     <div class="wrap">
       <div class="reviews-top reveal">
@@ -438,7 +494,7 @@ footer.site small { font: 500 .78rem/1.5 var(--mono); letter-spacing: .04em; }
       </div>
       <div class="steps">
         <div class="step reveal"><h3>Tap book</h3><p>Hit any Book button or scan the code on a flyer.</p></div>
-        <div class="step reveal"><h3>Pick a day</h3><p>Drop your name, number and the day that works for you.</p></div>
+        <div class="step reveal"><h3>Pick a day</h3><p>Drop your name, number and the day that works for you. Or tap an open time above.</p></div>
         <div class="step reveal"><h3>Get locked in</h3><p>I'll message you to confirm your spot. Pull up fresh.</p></div>
       </div>
     </div>
@@ -635,6 +691,95 @@ const half = Math.ceil(NAMES.length / 2);
     track.append(c);
   });
 });
+
+/* open times: Jermaine keeps availability.json up to date (only days and times, no names) */
+const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdnQxuB5c-81eNuxnkwZpGdly6DO29o6xSyjWumcNns9kBIIg/viewform?hl=en&usp=pp_url";
+const DAYS_SHOWN = 7;
+const pad = n => String(n).padStart(2, "0");
+const localDay = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+const twelve = t => { const [h, m] = t.split(":").map(Number); return ((h + 11) % 12 + 1) + ":" + pad(m) + (h < 12 ? "a" : "p"); };
+const niceDay = iso => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+const formLink = (day, time) => FORM + "&entry.130636395=" + day + (time ? "&entry.1173833266=" + encodeURIComponent("Time I want: " + time) : "");
+function bookLink(text, day, time, cls) {
+  const a = el("a", cls, null); a.href = formLink(day, time); a.target = "_blank"; a.rel = "noopener";
+  if (text) a.textContent = text;
+  return a;
+}
+function paintTimes(data) {
+  const now = new Date(), today = localDay(now), nowMin = now.getHours() * 60 + now.getMinutes();
+  const days = (data.days || []).filter(d => d.date >= today).slice(0, DAYS_SHOWN).map(d => ({
+    ...d, slots: (d.slots || []).filter(s => d.date > today || toMin(s.t) > nowMin + 15)
+  }));
+  if (!days.length) return false;
+  const dayBox = document.getElementById("days"), slotBox = document.getElementById("slots");
+  dayBox.replaceChildren(); dayBox.hidden = false;
+  const label = d => {
+    const open = d.slots.filter(s => s.open).length;
+    if (d.closed) return ["Off", ""];
+    if (!d.slots.length) return ["Ask", ""];
+    return open ? [open + " open", "has"] : ["Full", ""];
+  };
+  function show(i, focus) {
+    [...dayBox.children].forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+    if (focus) dayBox.children[i].focus();
+    const d = days[i], head = el("div", "slots-head");
+    const open = d.slots.filter(s => s.open);
+    head.append(el("h3", "", d.date === today ? "Today" : niceDay(d.date)),
+                el("span", "", d.slots.length ? open.length + " of " + d.slots.length + " open · " + (data.slot_minutes || 45) + " min each" : ""));
+    const parts = [head];
+    if (d.closed) {
+      const m = el("div", "times-msg"); m.append(el("p", "", "I'm not cutting this day. Pick another one."));
+      parts.push(m);
+    } else if (!d.slots.length) {
+      const m = el("div", "times-msg");
+      m.append(el("p", "", "No set hours this day. Weekends and lunch are hit or miss. Ask for it and I'll let you know."),
+               bookLink("Ask for " + niceDay(d.date).split(",")[0], d.date, "", "btn btn-red"));
+      parts.push(m);
+    } else {
+      const grid = el("div", "slot-grid");
+      d.slots.forEach(s => {
+        let item;
+        if (s.open) {
+          item = bookLink("", d.date, s.t, "slot");
+          item.setAttribute("aria-label", "Book " + niceDay(d.date) + " at " + s.t);
+          item.append(el("b", "", s.t), el("small", "", twelve(s.t)));
+        } else {
+          item = el("div", "slot taken"); item.setAttribute("aria-label", s.t + " is taken");
+          item.append(el("b", "", s.t), el("small", "", "Taken"));
+        }
+        grid.append(item);
+      });
+      parts.push(grid);
+      if (!open.length) {
+        const m = el("div", "times-msg"); m.style.marginTop = "12px";
+        m.append(el("p", "", "Fully booked 🔥 Pick another day, or ask and I'll squeeze you in if a spot opens."),
+                 bookLink("Ask for this day", d.date, "", "btn btn-ghost"));
+        parts.push(m);
+      }
+    }
+    slotBox.replaceChildren(...parts);
+  }
+  days.forEach((d, i) => {
+    const b = el("button", "day"); b.type = "button"; b.setAttribute("role", "tab");
+    const [txt, cls] = label(d), dt = new Date(d.date + "T12:00:00");
+    b.append(el("span", "dw", d.date === today ? "Today" : dt.toLocaleDateString("en-US", { weekday: "short" })),
+             el("span", "dn", String(dt.getDate())), el("span", "dc" + (cls ? " " + cls : ""), txt));
+    b.setAttribute("aria-label", niceDay(d.date) + ", " + txt);
+    b.addEventListener("click", () => show(i));
+    b.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); show((i + (e.key === "ArrowRight" ? 1 : -1) + days.length) % days.length, true); }
+    });
+    dayBox.append(b);
+  });
+  const first = days.findIndex(d => d.slots.some(s => s.open));
+  show(first < 0 ? 0 : first);
+  return true;
+}
+fetch("availability.json?v=" + Date.now(), { cache: "no-store" })
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(paintTimes)
+  .catch(() => { /* keep the friendly message that's already there */ });
 
 /* reveal on scroll (content already visible without this) */
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
