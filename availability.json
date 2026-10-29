@@ -2,28 +2,6 @@
  "slot_minutes": 45,
  "days": [
   {
-   "date": "2026-10-29",
-   "slots": [
-    {
-     "t": "17:45",
-     "open": true
-    },
-    {
-     "t": "18:30",
-     "open": true
-    },
-    {
-     "t": "19:15",
-     "open": true
-    },
-    {
-     "t": "20:00",
-     "open": true
-    }
-   ],
-   "closed": false
-  },
-  {
    "date": "2026-10-30",
    "slots": [
     {
@@ -240,7 +218,29 @@
     }
    ],
    "closed": false
+  },
+  {
+   "date": "2026-11-12",
+   "slots": [
+    {
+     "t": "17:45",
+     "open": true
+    },
+    {
+     "t": "18:30",
+     "open": true
+    },
+    {
+     "t": "19:15",
+     "open": true
+    },
+    {
+     "t": "20:00",
+     "open": true
+    }
+   ],
+   "closed": false
   }
  ],
- "updated": "2026-10-29T22:36"
+ "updated": "2026-10-30T00:00"
 }
