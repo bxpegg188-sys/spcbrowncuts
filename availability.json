@@ -6,11 +6,11 @@
    "slots": [
     {
      "t": "17:45",
-     "open": false
+     "open": true
     },
     {
      "t": "18:30",
-     "open": false
+     "open": true
     },
     {
      "t": "19:15",
@@ -242,5 +242,5 @@
    "closed": false
   }
  ],
- "updated": "2026-10-30T14:07"
+ "updated": "2026-10-30T21:44"
 }
