@@ -22,7 +22,7 @@
     },
     {
      "t": "15:00",
-     "open": false
+     "open": true
     }
    ],
    "closed": false
@@ -263,5 +263,5 @@
    "closed": false
   }
  ],
- "updated": "2026-11-01T15:24"
+ "updated": "2026-11-01T16:10"
 }
